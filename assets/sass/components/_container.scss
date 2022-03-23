@@ -1,0 +1,27 @@
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+
+  @include media-breakpoint-respond(xs) {
+    padding-left: 2.4rem;
+    padding-right: 2.4rem;
+  }
+
+  @include media-breakpoint-respond(sm) {
+    max-width: 540px;
+  }
+
+  @include media-breakpoint-respond(md) {
+    max-width: 720px;
+  }
+  @include media-breakpoint-respond(lg) {
+    max-width: 960px;
+  }
+  @include media-breakpoint-respond(xl) {
+    max-width: 1140px;
+  }
+
+  @include media-breakpoint-respond(xxl) {
+    max-width: 1320px;
+  }
+}

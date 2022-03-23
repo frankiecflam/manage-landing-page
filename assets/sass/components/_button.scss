@@ -1,0 +1,11 @@
+.btn:link,
+.btn:visited {
+    display: inline-block;
+    text-decoration: none;
+    text-transform: capitalize;
+    color: $color-neutral-pale-red;
+    background-color: $color-primary;
+    padding: 1rem 2rem;
+    border-radius: 100px;
+    font-weight: 500;
+}

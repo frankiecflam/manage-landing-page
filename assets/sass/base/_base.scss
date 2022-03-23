@@ -14,4 +14,11 @@ body {
     font-size: 1.6rem; // Base font-size
     font-family: 'Be Vietnam Pro', sans-serif;
     font-weight: 400;
+    background-color: $color-neutral-light-grey;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
 }
