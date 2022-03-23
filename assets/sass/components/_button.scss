@@ -1,11 +1,28 @@
-.btn:link,
-.btn:visited {
-    display: inline-block;
-    text-decoration: none;
-    text-transform: capitalize;
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  text-transform: capitalize;
+}
+
+.btn-cta {
+  &:link,
+  &:visited {
     color: $color-neutral-pale-red;
     background-color: $color-primary;
     padding: 1rem 2rem;
     border-radius: 100px;
     font-weight: 500;
+    transition: all 0.4s;
+    box-shadow: 0 2rem 2rem rgba(0, 0, 0, 0.1);
+  }
+
+  &:hover {
+    box-shadow: 0 3rem 3rem rgba(0, 0, 0, 0.2);
+    transform: translateY(-1rem);
+  }
+
+  &:active {
+    box-shadow: 0 2rem 2rem rgba(0, 0, 0, 0.15);
+    transform: translateY(-0.5rem);
+  }
 }
