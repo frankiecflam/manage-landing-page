@@ -460,6 +460,9 @@ main section {
       @media only screen and (min-width: 75em) {
         .secNav__social-list {
           order: 2; } }
+    .secNav__social-icon:hover {
+      transform: translateY(-0.5rem);
+      transition: all 0.4s; }
   .secNav__links-list {
     list-style: none;
     display: grid;
@@ -471,10 +474,24 @@ main section {
     @media only screen and (min-width: 75em) {
       .secNav__links-list {
         grid-column: auto; } }
-  .secNav__links-link {
+  .secNav__links-link:link, .secNav__links-link:visited {
     text-decoration: none;
     color: #9095a7;
-    text-transform: capitalize; }
+    text-transform: capitalize;
+    transition: all .4s;
+    position: relative; }
+    .secNav__links-link:link::after, .secNav__links-link:visited::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 5px;
+      background-color: #f25f3a;
+      transform: translateY(1rem);
+      transition: all .4s; }
+  .secNav__links-link:hover::after {
+    width: 100%; }
   .secNav__newsletter {
     display: flex;
     flex-direction: column;

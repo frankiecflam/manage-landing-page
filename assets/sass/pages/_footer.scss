@@ -15,7 +15,6 @@
   column-gap: 5rem;
   row-gap: 5rem;
 
-
   &__social {
     display: flex;
     flex-direction: column;
@@ -39,6 +38,13 @@
         order: 2;
       }
     }
+
+    &-icon {
+      &:hover {
+        transform: translateY(-0.5rem);
+        transition: all 0.4s;
+      }
+    }
   }
 
   &__links {
@@ -58,9 +64,34 @@
     }
 
     &-link {
-      text-decoration: none;
-      color: $color-neutral-grey-blue;
-      text-transform: capitalize;
+      &:link,
+      &:visited {
+        text-decoration: none;
+        color: $color-neutral-grey-blue;
+        text-transform: capitalize;
+        transition: all .4s;
+        position: relative;
+
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 0;
+          height: 5px;
+          background-color: $color-primary;
+          transform: translateY(1rem);
+          transition: all .4s;
+        }
+      }
+
+      &:hover {
+        &::after {
+          width: 100%;
+        }
+      }
+
+      
     }
   }
 
@@ -88,7 +119,7 @@
       font-family: "Be Vietnam Pro", sans-serif;
 
       @include media-breakpoint-respond(md) {
-          grid-template-columns: 1fr 15rem;
+        grid-template-columns: 1fr 15rem;
       }
     }
 

@@ -68,7 +68,7 @@ testiomonialsSliderController.onclick = function (e) {
   slideTo(e.target.dataset.slide);
 };
 
-// Automatica Sliding after nth sec
+// Automatica Sliding after n seconds
 setInterval(() => {
   // check if nextslide is out of range
   if (currentSlide === maxSlide - 1) {
