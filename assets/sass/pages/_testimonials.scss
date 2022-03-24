@@ -39,8 +39,8 @@
         transition: all .4s;
 
         &-img {
-            width: 15%;
-            margin-top: -10rem;
+            width: 10rem;
+            margin-top: -12rem;
         }
 
         &-name {
@@ -57,7 +57,11 @@
 
     &__slider-btnController {
         position: absolute;
-        top: 75%;
+        top: 80%;
+
+        @include media-breakpoint-respond(sm) {
+            top: 75%;
+        }
 
         @include media-breakpoint-respond(md) {
             top: 70%;
@@ -85,6 +89,10 @@
 
     &__btn-cta {
         margin-top: -5rem;
+        @include media-breakpoint-respond(xs) {
+            margin-top: 0;
+        }
+
         align-self: center;
     }
 }

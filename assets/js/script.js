@@ -32,6 +32,10 @@ function testimonialsSliderInit() {
 testimonialsSliderInit();
 
 // SlideTo
+let currentSlide = 0;
+const minSlide = 0;
+const maxSlide = testimonialsItems.length;
+
 function slideTo(slide) {
   testimonialsItems.forEach((item, i) => {
     item.style.transform = `translateX(${(i - slide) * 100}vw)`;
@@ -41,6 +45,9 @@ function slideTo(slide) {
   testimonialsSliderBtns.forEach((item, i) => {
       +slide === i ? item.classList.add("active"): item.classList.remove("active");
   })
+
+  // Update current slidePointer
+  currentSlide = +slide;
 }
 
 // Upon a click on testimonials' slider buttons
@@ -49,3 +56,16 @@ testiomonialsSliderController.onclick = function (e) {
 
   slideTo(e.target.dataset.slide);
 };
+
+// Automatica Sliding after nth sec
+setInterval(() => {
+    // check if nextslide is out of range
+    if (currentSlide === maxSlide - 1) {
+        slideTo(minSlide);
+        currentSlide = minSlide;
+    }
+    else {
+        const nextslide = currentSlide + 1;
+        slideTo(nextslide);
+    }
+}, 5000);

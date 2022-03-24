@@ -1,0 +1,131 @@
+.footer {
+  padding: 4.8rem 0 9.6rem 0;
+  background-color: $color-neutral-dark-blue;
+}
+
+.secNav {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  justify-content: center;
+
+  @include media-breakpoint-respond(xl) {
+    grid-template-columns: 25rem 40rem 1fr;
+  }
+  column-gap: 5rem;
+  row-gap: 5rem;
+
+
+  &__social {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    order: 2;
+    row-gap: 2rem;
+    grid-column: 1 / -1;
+
+    @include media-breakpoint-respond(xl) {
+      order: -1;
+      grid-column: auto;
+    }
+
+    &-list {
+      display: flex;
+      list-style: none;
+      column-gap: 1.5rem;
+      order: -1;
+      @include media-breakpoint-respond(xl) {
+        order: 2;
+      }
+    }
+  }
+
+  &__links {
+    &-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(2, auto);
+      justify-content: center;
+      column-gap: 10rem;
+      row-gap: 2rem;
+
+      grid-column: 1 / -1;
+
+      @include media-breakpoint-respond(xl) {
+        grid-column: auto;
+      }
+    }
+
+    &-link {
+      text-decoration: none;
+      color: $color-neutral-grey-blue;
+      text-transform: capitalize;
+    }
+  }
+
+  &__newsletter {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    order: -1;
+    grid-column: 1 / -1;
+
+    @include media-breakpoint-respond(md) {
+      grid-column: 2 / 6;
+    }
+
+    @include media-breakpoint-respond(xl) {
+      order: 2;
+      grid-column: auto;
+    }
+
+    &-form {
+      display: grid;
+      grid-template-columns: 1fr;
+      column-gap: 1rem;
+      row-gap: 2rem;
+      font-family: "Be Vietnam Pro", sans-serif;
+
+      @include media-breakpoint-respond(md) {
+          grid-template-columns: 1fr 15rem;
+      }
+    }
+
+    &-inputGroup {
+      display: flex;
+      flex-direction: column;
+      row-gap: 0.5rem;
+      flex-grow: 1;
+    }
+
+    &-email {
+      padding: 0.5rem 1rem;
+
+      &::placeholder {
+        font-size: 1.2em;
+        color: $color-neutral-grey-blue;
+      }
+    }
+
+    .invalid &-inputFeedback {
+      color: $color-primary;
+      font-size: 1.4rem;
+    }
+
+    &-copyright {
+      color: $color-neutral-grey-blue;
+      text-transform: capitalize;
+      position: absolute;
+      bottom: -20%;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+
+      @include media-breakpoint-respond(xl) {
+        position: relative;
+        text-align: left;
+      }
+    }
+  }
+}

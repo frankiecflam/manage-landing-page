@@ -26,3 +26,23 @@
     transform: translateY(-0.5rem);
   }
 }
+
+.btn-submit {
+  background-color: $color-primary;
+  color: $color-neutral-light-grey;
+  border: none;
+  padding: 1rem 3rem;
+  border-radius: 100px;
+  font-weight: 700;
+  transition: all 0.4s;
+  box-shadow: inset 0 0 0 0.3rem $color-neutral-dark-blue;
+  text-transform: uppercase;
+
+  &:hover {
+    transform: translateY(-1rem);
+  }
+
+  &:active {
+    transform: translateY(-0.5rem);
+  }
+}
