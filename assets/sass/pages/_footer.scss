@@ -108,9 +108,34 @@
       }
     }
 
-    .invalid &-inputFeedback {
+    &-inputFeedback-invalid {
+      display: none;
       color: $color-primary;
       font-size: 1.4rem;
+    }
+
+    &-inputFeedback-valid {
+      display: none;
+      color: green;
+      font-size: 1.4rem;
+    }
+
+    &-formFeedback-success {
+      display: none;
+      color: yellow;
+      font-size: 1.4rem;
+    }
+
+    .invalid &-inputFeedback-invalid {
+      display: block;
+    }
+
+    .valid &-inputFeedback-valid {
+      display: block;
+    }
+
+    .was-validated-success &-formFeedback-success {
+      display: block;
     }
 
     &-copyright {

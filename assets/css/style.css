@@ -193,10 +193,10 @@ img {
     .mainNav__menuBtn.active > .mainNav__menuBtn-icon::after {
       transform: rotate(-135deg); }
   .mainNav__menuBtn.active ~ .mainNav__list {
-    margin-top: 8rem;
+    padding: 8rem 0;
     font-size: 2.8rem;
     height: 100vh;
-    overflow: hidden; }
+    overflow-y: auto; }
     .mainNav__menuBtn.active ~ .mainNav__list .mainNav__item {
       padding-bottom: 1rem;
       border-bottom: 3px solid rgba(144, 149, 167, 0.3); }
@@ -507,9 +507,24 @@ main section {
       .secNav__newsletter-email::placeholder {
         font-size: 1.2em;
         color: #9095a7; }
-    .invalid .secNav__newsletter-inputFeedback {
+    .secNav__newsletter-inputFeedback-invalid {
+      display: none;
       color: #f25f3a;
       font-size: 1.4rem; }
+    .secNav__newsletter-inputFeedback-valid {
+      display: none;
+      color: green;
+      font-size: 1.4rem; }
+    .secNav__newsletter-formFeedback-success {
+      display: none;
+      color: yellow;
+      font-size: 1.4rem; }
+    .invalid .secNav__newsletter-inputFeedback-invalid {
+      display: block; }
+    .valid .secNav__newsletter-inputFeedback-valid {
+      display: block; }
+    .was-validated-success .secNav__newsletter-formFeedback-success {
+      display: block; }
     .secNav__newsletter-copyright {
       color: #9095a7;
       text-transform: capitalize;
