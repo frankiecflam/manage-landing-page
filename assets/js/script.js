@@ -14,6 +14,7 @@ const newsletterInputGroup = document.querySelector(
   ".secNav__newsletter-inputGroup"
 );
 const copyrightYear = document.querySelector(".secNav__year");
+const allSections = document.querySelectorAll("section");
 
 // Menu button
 navMenuBtn.onclick = () => {
@@ -221,7 +222,34 @@ newsletterEmailInput.addEventListener("blur", function () {
   checkInputValidity(newsletterEmailInput);
 });
 
-
 // Update copyright year
 const today = new Date();
 copyrightYear.innerText = today.getFullYear();
+
+// Reveal section on scroll
+// Reveal animation
+function revealAnimation(section) {
+  section.style.opacity = 1;
+  section.style.transform = "translateY(0)";
+}
+
+// Functions
+const revealSection = function(entries, observer){
+  const [entry] = entries;
+  if(!entry.isIntersecting) return;
+
+  revealAnimation(entry.target);
+  observer.unobserve(entry.target);
+}
+
+// Options
+const revealObs = {
+  root: null,
+  threshold: 0.1
+}
+
+// Observer
+allSections.forEach(section => {
+  const sectionObserver = new IntersectionObserver(revealSection, revealObs);
+  sectionObserver.observe(section);
+})
