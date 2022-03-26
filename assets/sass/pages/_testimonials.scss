@@ -24,6 +24,8 @@
         top: 0;
         left: 0;
         width: 100%;
+        // Prevent browser default behaviour overriding pointer events **Crucial
+        touch-action: none;
 
         @include media-breakpoint-respond(xl) {
             left: 25%;

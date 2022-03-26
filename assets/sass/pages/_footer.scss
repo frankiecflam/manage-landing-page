@@ -98,9 +98,10 @@
   &__newsletter {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     order: -1;
     grid-column: 1 / -1;
+    justify-content: space-between;
+    row-gap: 2rem;
 
     @include media-breakpoint-respond(md) {
       grid-column: 2 / 6;
@@ -111,12 +112,27 @@
       grid-column: auto;
     }
 
+    &-heading {
+      color: $color-neutral-light-grey;
+      text-transform: capitalize;
+      letter-spacing: 0.1rem;
+      font-size: 2.4rem;
+      text-align: center;
+
+      @include media-breakpoint-respond(xl) {
+        text-align: left;
+        font-size: 1.8rem;
+      }
+
+    }
+
     &-form {
       display: grid;
       grid-template-columns: 1fr;
       column-gap: 1rem;
       row-gap: 2rem;
       font-family: "Be Vietnam Pro", sans-serif;
+      align-items: flex-start;
 
       @include media-breakpoint-respond(md) {
         grid-template-columns: 1fr 15rem;
@@ -136,6 +152,10 @@
       &::placeholder {
         font-size: 1.2em;
         color: $color-neutral-grey-blue;
+      }
+
+      &:focus {
+        outline: 2px solid $color-primary;
       }
     }
 

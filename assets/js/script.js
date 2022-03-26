@@ -1,5 +1,6 @@
 // Element Selectors
 const navMenuBtn = document.querySelector(".mainNav__menuBtn");
+const testimonials = document.querySelector(".testimonials");
 const testiomonialsSlider = document.querySelector(".testimonials__slider");
 const testimonialsItems = document.querySelectorAll(".testimonials__item");
 const testiomonialsSliderController = document.querySelector(
@@ -12,6 +13,7 @@ const newsletterEmailInput = document.querySelector(
 const newsletterInputGroup = document.querySelector(
   ".secNav__newsletter-inputGroup"
 );
+const copyrightYear = document.querySelector(".secNav__year");
 
 // Menu button
 navMenuBtn.onclick = () => {
@@ -82,8 +84,24 @@ function autoSliding() {
     slideTo(nextslide);
   }
 }
-startSliding = setInterval(autoSliding, slidingInterval);
 
+function startInterval(f, intervalSecs) {
+  const pointer = setInterval(f, intervalSecs);
+  return pointer;
+}
+
+function stopInterval(p) {
+  clearInterval(p);
+}
+
+function resetInterval (p, f, intervalSecs) {
+  stopInterval(p);
+  const pointer = startInterval(f, intervalSecs);
+  return pointer;
+}
+
+// Enabled by default
+startSliding = startInterval(autoSliding, slidingInterval);
 
 // Slide to scroll for testimonials on touch
 let startPositionX, endPositionX;
@@ -104,30 +122,43 @@ function determineSlidingTarget(currentSlide, direction) {
 }
 
 testimonialsItems.forEach((item, i) => {
-  item.addEventListener("touchstart", function (e) {
-    startPositionX = e.touches[0].pageX;
+  item.addEventListener("pointerdown", function (e) {
+    startPositionX = e.pageX;
 
-    // Disable automatic sliding
-    clearInterval(startSliding);
+    // Clear
+    stopInterval(startSliding);
   });
 
-  item.addEventListener("touchend", function (e) {
-    endPositionX = e.changedTouches[0].pageX;
+  item.addEventListener("pointerup", function (e) {
+    endPositionX = e.pageX;
 
-    // Slide to right, previous
-    if (endPositionX - startPositionX > slideThreshold) {
+    if(endPositionX - startPositionX > slideThreshold) {
       slideTo(determineSlidingTarget(i, "previous"));
     }
 
-    // Slide to left, next
-    if (startPositionX - endPositionX > slideThreshold) {
+    if(startPositionX - endPositionX > slideThreshold) {
       slideTo(determineSlidingTarget(i, "next"));
     }
 
-    // Re-enable automatic sliding
-    startSliding = setInterval(autoSliding, slidingInterval);
+    // Start
+    startSliding = startInterval(autoSliding, slidingInterval);
   });
 });
+
+// "Left" and "Right" keys to scroll
+document.addEventListener("keydown", function(e){
+  if(e.key === "ArrowLeft") {
+    slideTo(determineSlidingTarget(currentSlide, "previous"));
+    // Reset
+    startSliding = resetInterval(startSliding, autoSliding, slidingInterval);
+  }
+
+  if(e.key === "ArrowRight") {
+    slideTo(determineSlidingTarget(currentSlide, "next"));
+    // Reset
+    startSliding = resetInterval(startSliding, autoSliding, slidingInterval);
+  }
+})
 
 // Clear validity
 function clearInputValidity(input) {
@@ -189,3 +220,8 @@ newsletterEmailInput.addEventListener("blur", function () {
   // Check input validity
   checkInputValidity(newsletterEmailInput);
 });
+
+
+// Update copyright year
+const today = new Date();
+copyrightYear.innerText = today.getFullYear();
