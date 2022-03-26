@@ -69,7 +69,10 @@ testiomonialsSliderController.onclick = function (e) {
 };
 
 // Automatica Sliding after n seconds
-setInterval(() => {
+let startSliding;
+const slidingInterval = 5000;
+
+function autoSliding() {
   // check if nextslide is out of range
   if (currentSlide === maxSlide - 1) {
     slideTo(minSlide);
@@ -78,7 +81,53 @@ setInterval(() => {
     const nextslide = currentSlide + 1;
     slideTo(nextslide);
   }
-}, 5000);
+}
+startSliding = setInterval(autoSliding, slidingInterval);
+
+
+// Slide to scroll for testimonials on touch
+let startPositionX, endPositionX;
+const slideThreshold = 75;
+
+function determineSlidingTarget(currentSlide, direction) {
+  let nextSlide;
+
+  if (direction === "previous") {
+    nextSlide = currentSlide - 1 < minSlide ? maxSlide - 1 : currentSlide - 1;
+  }
+
+  if (direction === "next") {
+    nextSlide = currentSlide + 1 === maxSlide ? minSlide : currentSlide + 1;
+  }
+
+  return nextSlide;
+}
+
+testimonialsItems.forEach((item, i) => {
+  item.addEventListener("touchstart", function (e) {
+    startPositionX = e.touches[0].pageX;
+
+    // Disable automatic sliding
+    clearInterval(startSliding);
+  });
+
+  item.addEventListener("touchend", function (e) {
+    endPositionX = e.changedTouches[0].pageX;
+
+    // Slide to right, previous
+    if (endPositionX - startPositionX > slideThreshold) {
+      slideTo(determineSlidingTarget(i, "previous"));
+    }
+
+    // Slide to left, next
+    if (startPositionX - endPositionX > slideThreshold) {
+      slideTo(determineSlidingTarget(i, "next"));
+    }
+
+    // Re-enable automatic sliding
+    startSliding = setInterval(autoSliding, slidingInterval);
+  });
+});
 
 // Clear validity
 function clearInputValidity(input) {
@@ -120,7 +169,6 @@ newsletterForm.addEventListener("submit", function (e) {
   setTimeout(() => {
     clearFormValidity(newsletterForm);
   }, 8000);
-
 });
 
 // Clear any previous form validity if there is input coming in
