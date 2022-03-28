@@ -81,6 +81,7 @@ testimonialsItems.forEach((item, i) => {
 });
 ```
 
+
 ### Why I took this challenge
 This is a coding challenge from Frontend mentor. The main purpose of coding this website is to practise my SASS and JS skills.
 
