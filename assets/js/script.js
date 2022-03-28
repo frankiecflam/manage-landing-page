@@ -69,6 +69,7 @@ testiomonialsSliderController.onclick = function (e) {
   if (!e.target.classList.contains("testimonials__slider-btn")) return;
 
   slideTo(e.target.dataset.slide);
+  startSliding = resetInterval(startSliding, autoSliding, slidingInterval);
 };
 
 // Automatica Sliding after n seconds
@@ -126,7 +127,6 @@ testimonialsItems.forEach((item, i) => {
   item.addEventListener("pointerdown", function (e) {
     startPositionX = e.pageX;
 
-    // Clear
     stopInterval(startSliding);
   });
 
@@ -141,7 +141,6 @@ testimonialsItems.forEach((item, i) => {
       slideTo(determineSlidingTarget(i, "next"));
     }
 
-    // Start
     startSliding = startInterval(autoSliding, slidingInterval);
   });
 });

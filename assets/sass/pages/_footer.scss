@@ -177,6 +177,12 @@
       font-size: 1.4rem;
     }
 
+    &-formFeedback-unsuccess {
+      display: none;
+      color: $color-primary;
+      font-size: 1.4rem;
+    }
+
     .invalid &-inputFeedback-invalid {
       display: block;
     }
@@ -186,6 +192,10 @@
     }
 
     .was-validated-success &-formFeedback-success {
+      display: block;
+    }
+
+    .was-validated-unsuccess &-formFeedback-unsuccess {
       display: block;
     }
 
