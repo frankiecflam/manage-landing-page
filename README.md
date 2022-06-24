@@ -86,6 +86,6 @@ testimonialsItems.forEach((item, i) => {
 This is a coding challenge from Frontend mentor. The main purpose of coding this website is to practise my SASS and JS skills.
 
 ## Author
-- Email - [Frankie Lam](frankiechunfai@gmail.com)
+- Email - [Frankie Lam](cfl.frankie@gmail.com)
 - Instagram - [@frankie___lam](https://www.instagram.com/frankie___lam)
 - Facebook - [@Frankie Lam](https://www.facebook.com/frankiecflam)
